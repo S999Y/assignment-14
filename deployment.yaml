@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: node-app
+  namespace: production
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: node-app
+
+  template:
+    metadata:
+      labels:
+        app: node-app
+
+    spec:
+      containers:
+        - name: node-app
+          image: shohanur9999/module-14express-app:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 5000
